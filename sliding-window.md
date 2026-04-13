@@ -44,7 +44,9 @@ flowchart LR
 flowchart LR
     A1[ ] --> A2[ ] --> A3[ ] --> A4[ ] --> A5[ ] --> A6[ ] --> A7[ ] --> A8[ ]
 
-    Move --> 
+    Move[→]
+
+    A3 --> Move
 
     classDef base fill:#3b82f6,stroke:#1e3a8a,color:#ffffff;
     classDef window fill:#facc15,stroke:#a16207,color:#000000;
