@@ -215,3 +215,202 @@ classDef window fill:#facc15,stroke:#92400e,color:#000000;
 
 class step1,step2,step3 window;
 ```
+
+
+# When to Use (Pattern Recognition)
+
+---
+
+## Diagram 1 — (0s: When to Use?)
+
+“When should you use sliding window?”
+
+```mermaid
+flowchart LR
+A1[2] --- A2[1] --- A3[3] --- A4[2] --- A5[1] --- A6[2]
+
+Q[?]
+
+Q --> A3
+
+classDef base fill:#3b82f6,stroke:#1e3a8a,color:#ffffff;
+classDef purple fill:#a855f7,stroke:#581c87,color:#ffffff;
+
+class A1,A2,A3,A4,A5,A6 base;
+class Q purple;
+```
+
+---
+
+## Diagram 2 — (3s: Continuous Parts)
+
+“First clue… continuous parts”
+
+```mermaid
+flowchart LR
+A1[2] --- A2[1] --- A3[3] --- A4[2] --- A5[1] --- A6[2]
+
+W1[[1,3,2]]
+
+bad1((✖)) --> A1
+bad2((✖)) --> A3
+bad3((✖)) --> A5
+
+classDef base fill:#3b82f6,stroke:#1e3a8a,color:#ffffff;
+classDef window fill:#facc15,stroke:#92400e,color:#000000;
+classDef bad fill:#ef4444,stroke:#7f1d1d,color:#ffffff;
+
+class A2,A3,A4 window;
+class A1,A5,A6 base;
+class W1 window;
+class bad1,bad2,bad3 bad;
+```
+
+---
+
+## Diagram 3 — (6s: Adjacent Elements)
+
+“Elements must be next to each other”
+
+```mermaid
+flowchart LR
+A1[2] --> A2[1] --> A3[3] --> A4[2] --> A5[1] --> A6[2]
+
+classDef base fill:#3b82f6,stroke:#1e3a8a,color:#ffffff;
+
+class A1,A2,A3,A4,A5,A6 base;
+```
+
+---
+
+## Diagram 4 — (9s: Optimization Goal)
+
+“Second clue… words like longest or smallest”
+
+```mermaid
+flowchart LR
+A1[2] --- A2[1] --- A3[3] --- A4[2] --- A5[1] --- A6[2]
+
+goal[Longest?]
+
+goal --> A3
+
+W[[1,3,2,1]]
+
+classDef base fill:#3b82f6,stroke:#1e3a8a,color:#ffffff;
+classDef window fill:#facc15,stroke:#92400e,color:#000000;
+classDef good fill:#22c55e,stroke:#14532d,color:#ffffff;
+
+class A2,A3,A4,A5 window;
+class A1,A6 base;
+class goal good;
+class W window;
+```
+
+---
+
+## Diagram 5 — (12s: Condition)
+
+“Third clue… a condition”
+
+```mermaid
+flowchart LR
+A1[2] --- A2[1] --- A3[3] --- A4[2] --- A5[1] --- A6[2]
+
+W[[1,3,2]]
+
+cond[sum ≤ 5]
+
+cond --> W
+
+classDef base fill:#3b82f6,stroke:#1e3a8a,color:#ffffff;
+classDef window fill:#facc15,stroke:#92400e,color:#000000;
+classDef good fill:#22c55e,stroke:#14532d,color:#ffffff;
+
+class A2,A3,A4 window;
+class A1,A5,A6 base;
+class W window;
+class cond good;
+```
+
+---
+
+## Diagram 6 — (15s: Avoid Brute Force)
+
+“We don’t try everything…”
+
+```mermaid
+flowchart LR
+B1([All subarrays]) --> X((✖))
+
+classDef bad fill:#ef4444,stroke:#7f1d1d,color:#ffffff;
+
+class B1,X bad;
+```
+
+---
+
+## Diagram 7 — (18s: One Moving Window)
+
+“We grow and adjust one window”
+
+```mermaid
+flowchart LR
+step1[[Window]] --> step2[[Window]] --> step3[[Window]]
+
+classDef window fill:#facc15,stroke:#92400e,color:#000000;
+
+class step1,step2,step3 window;
+```
+
+---
+
+## Diagram 8 — (21s: Checklist)
+
+“So remember this checklist”
+
+```mermaid
+flowchart LR
+C1[Continuous] --> C2[Condition] --> C3[Best / Count]
+
+classDef good fill:#22c55e,stroke:#14532d,color:#ffffff;
+
+class C1,C2,C3 good;
+```
+
+---
+
+## Diagram 9 — (24s: All Conditions Met)
+
+“If all three match…”
+
+```mermaid
+flowchart LR
+C1[Continuous ✔] --> C2[Condition ✔] --> C3[Best ✔]
+
+classDef good fill:#22c55e,stroke:#14532d,color:#ffffff;
+
+class C1,C2,C3 good;
+```
+
+---
+
+## Diagram 10 — (27s: Use Sliding Window)
+
+“Use sliding window”
+
+```mermaid
+flowchart LR
+A1[2] --- A2[1] --- A3[3] --- A4[2] --- A5[1] --- A6[2]
+
+W[[Sliding Window]]
+
+W --> A3
+
+classDef base fill:#3b82f6,stroke:#1e3a8a,color:#ffffff;
+classDef window fill:#facc15,stroke:#92400e,color:#000000;
+
+class A1,A2,A3,A4,A5,A6 base;
+class W window;
+```
+
